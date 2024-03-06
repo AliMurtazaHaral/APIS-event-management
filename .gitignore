@@ -1,0 +1,24 @@
+# dependencies
+/node_modules
+
+#Static images
+/Assets/Images/Temp
+/Logs
+
+# misc
+.DS_Store
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+
+.gitlab-ci.yml
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+#editor settings
+.vscode
+
+# package-lock.json
