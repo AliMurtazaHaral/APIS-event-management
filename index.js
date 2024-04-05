@@ -31,7 +31,7 @@ app.use((req, res, next) => {
     bodyParser.json()(req, res, next);
   }
 });
-const allowedOrigins = ['http://localhost:3000'];
+const allowedOrigins = ["POST", "GET", "PUT", "OPTIONS", "PATCH", "DELETE"];
 app.use(
   cors({
     origin: function (origin, callback) {
