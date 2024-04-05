@@ -24,7 +24,7 @@ app.use(actuator({ infoGitMode: 'full' }));
 app.use(bodyParser.urlencoded({ extended: false })) // ALLOW URL ENCODED PARSER
 app.use(cors()) // ALLOWED ALL CROSS ORIGIN REQUESTS
 app.use(require("morgan")("dev")); // view engine setup
-
+app.use(express.json());
 // ALLOW APPLICATION JSON
 app.use((req, res, next) => {
   console.log('req.originalUrl', req.originalUrl)
