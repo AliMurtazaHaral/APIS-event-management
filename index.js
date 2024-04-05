@@ -19,21 +19,9 @@ require('./config/global'); // GLOBAL SETTINGS FILES
 
 const server = http.createServer(app)
 
-// ------------------------ GLOBAL MIDDLEWARE -------------------------
-app.use(actuator({ infoGitMode: 'full' }));
-app.use(bodyParser.urlencoded({ extended: false })) // ALLOW URL ENCODED PARSER
-app.use(cors()) // ALLOWED ALL CROSS ORIGIN REQUESTS
-app.use(require("morgan")("dev")); // view engine setup
+
 app.use(express.json());
-// ALLOW APPLICATION JSON
-app.use((req, res, next) => {
-  console.log('req.originalUrl', req.originalUrl)
-  if (req.originalUrl === "/app-api/stripe/webhook-update-account") {
-    next();
-  } else {
-    bodyParser.json()(req, res, next);
-  }
-});
+
 app.use(
   cors({
     origin: function (origin, callback) {
@@ -59,6 +47,4 @@ const appRoutes = require("./routes");
 appRoutes(app)
 
 // --------------------------    START SERVER    ---------------------
-server.listen(port, () => {
-  console.log(`\nServer started on ${port} :) \n`)
-})
+app.listen(port,console.log(`Server is running at: ${port}`))
