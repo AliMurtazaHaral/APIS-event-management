@@ -2,9 +2,9 @@
   "name": "event-management",
   "version": "0.0.0",
   "private": true,
-  "main": "server.js",
+  "main": "index.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "aws-sdk": "^2.747.0",
@@ -15,7 +15,7 @@
     "debug": "~2.6.9",
     "dotenv": "^8.6.0",
     "ejs": "^3.1.5",
-    "express": "^4.16.4",
+    "express": "^4.19.2",
     "express-actuator": "^1.8.4",
     "express-umzug": "^2.1.4",
     "fcm-notification": "^2.0.0",
