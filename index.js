@@ -18,7 +18,6 @@ const actuator = require('express-actuator');
 require('./config/global'); // GLOBAL SETTINGS FILES
 
 const server = http.createServer(app)
-
 // ------------------------ GLOBAL MIDDLEWARE -------------------------
 app.use(actuator({ infoGitMode: 'full' }));
 app.use(bodyParser.urlencoded({ extended: false })) // ALLOW URL ENCODED PARSER
