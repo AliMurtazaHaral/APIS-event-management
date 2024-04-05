@@ -34,7 +34,23 @@ app.use((req, res, next) => {
     bodyParser.json()(req, res, next);
   }
 });
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      // Check if the origin is in the allowedOrigins array
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+  })
+);
 
+
+app.get("/",(req,res)=>{
+    res.status(200).send({msg:"Welcome to event management"})
+})
 // ------------------------    Cron job    -------------------
 require('./config/cron_job');
 
