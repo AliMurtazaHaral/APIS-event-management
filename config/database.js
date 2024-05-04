@@ -1,7 +1,12 @@
 require('dotenv').config();
 const Sequelize = require('sequelize')
+console.log(process.env.DB_CONNECTION);
+console.log(process.env.DB_HOST);
+console.log(process.env.DB_PASSWORD);
+console.log(process.env.DB_PORT);
+console.log(process.env.DB_USERNAME);
 const DB_CREDENTIAL = {
-  database: process.env.DB_DATABASE,
+  database: process.env.DB_CONNECTION,
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
   host: process.env.DB_HOST,

@@ -1,6 +1,6 @@
 // PARSE .ENV
-const dotenv = require('dotenv');
-dotenv.config({ path: '.env.master' });
+require('dotenv').config();
+
 // FOR SERVER
 // CHECK WITH PROTOCOL TO USE
 const http = require('http')
@@ -17,11 +17,13 @@ const actuator = require('express-actuator');
 require('./config/global'); // GLOBAL SETTINGS FILES
 
 const server = http.createServer(app)
+
 // ------------------------ GLOBAL MIDDLEWARE -------------------------
 app.use(actuator({ infoGitMode: 'full' }));
 app.use(bodyParser.urlencoded({ extended: false })) // ALLOW URL ENCODED PARSER
+app.use(cors()) // ALLOWED ALL CROSS ORIGIN REQUESTS
 app.use(require("morgan")("dev")); // view engine setup
-app.use(express.json());
+
 // ALLOW APPLICATION JSON
 app.use((req, res, next) => {
   console.log('req.originalUrl', req.originalUrl)
@@ -31,24 +33,7 @@ app.use((req, res, next) => {
     bodyParser.json()(req, res, next);
   }
 });
-const allowedOrigins = ["POST", "GET", "PUT", "OPTIONS", "PATCH", "DELETE"];
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      // Check if the origin is in the allowedOrigins array
-      if (!origin || allowedOrigins.includes(origin)) {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
-  })
-);
 
-
-app.get("/",(req,res)=>{
-    res.status(200).send({msg:"Welcome to event management"})
-})
 // ------------------------    Cron job    -------------------
 require('./config/cron_job');
 
